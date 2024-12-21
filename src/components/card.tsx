@@ -300,8 +300,8 @@ type TCardState =
 const idle: TCardState = { type: 'idle' };
 
 const innerStyles: { [Key in TCardState['type']]?: string } = {
-  idle: 'hover:outline outline-2 outline-neutral-50 cursor-grab',
-  'is-dragging': 'opacity-40',
+  idle: 'hover:outline outline-2  outline-neutral-50 cursor-grab',
+  'is-dragging': 'opacity-40 ',
 };
 
 const outerStyles: { [Key in TCardState['type']]?: string } = {
@@ -333,25 +333,31 @@ const CardDisplay = ({
 }) => (
   <div
     ref={outerRef}
-    className={`flex flex-shrink-0 flex-col gap-2 px-3 py-1 ${
+    className={clsx(
+      `flex flex-shrink-0 flex-col gap-2 px-3 py-1 `,
       outerStyles[state.type]
-    }`}
+    )}
   >
     {state.type === 'is-over' && state.closestEdge === 'top' && (
       <CardShadow dragging={state.dragging} />
     )}
     <div
       ref={innerRef}
-      className={`rounded bg-slate-700 p-2 text-slate-200 ${
-        // className={`rounded bg-slate-700 p-2 text-slate-300 ${
-        innerStyles[state.type]
-      }`}
+      className={clsx(
+        'rounded bg-slate-700 p-2 text-slate-200 ',
+        innerStyles[state.type],
+        state.type === 'is-dragging'
+          ? 'animate-jump-out outline-2  outline-neutral-50'
+          : 'animate-jump-in outline-2  outline-neutral-50'
+      )}
       style={
         state.type === 'preview'
           ? {
               width: state.dragging.width,
               height: state.dragging.height,
               transform: 'rotate(4deg)',
+              transition: 'transition-all duration-500ms ease-in',
+              border: '2px solid  white',
             }
           : undefined
       }
