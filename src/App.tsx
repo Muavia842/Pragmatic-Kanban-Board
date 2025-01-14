@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
-import { Board, getInitialData } from './components/board';
+import { Board } from './components/board';
+import { getInitialData } from './components/dummyDara';
 
 const App = () => (
   <div className="flex h-screen flex-col">

@@ -8,7 +8,7 @@
 //       {
 //         id: uuidv4(),
 //         title: 'front end card',
-//         priority: 'Heigh',
+//         priority: 'High',
 //         description: 'description for Todo card 1',
 //       },
 //       {
@@ -20,13 +20,13 @@
 //       {
 //         id: uuidv4(),
 //         title: 'fullstack developer card',
-//         priority: 'Heigh',
+//         priority: 'High',
 //         description: 'description for Todo card 3',
 //       },
 //       {
 //         id: uuidv4(),
 //         title: 'backend developer card',
-//         priority: 'Heigh',
+//         priority: 'High',
 //         description: 'description for Todo card 4',
 //       },
 //       {
@@ -38,7 +38,7 @@
 //       {
 //         id: uuidv4(),
 //         title: 'comrex private limited',
-//         priority: 'Heigh',
+//         priority: 'High',
 //         description: 'description for Todo card 6',
 //       },
 //     ],
@@ -55,7 +55,7 @@
 //       },
 //       {
 //         id: uuidv4(),
-//         priority: 'Heigh',
+//         priority: 'High',
 //         title: 'this card assigne to Sunny',
 //         description: 'description for InProgress card 8',
 //       },
@@ -87,7 +87,7 @@
 //       {
 //         id: uuidv4(),
 //         title: 'Testing',
-//         priority: 'Heigh',
+//         priority: 'High',
 //         description: 'description for Testing card 12',
 //       },
 //       {
@@ -111,7 +111,7 @@
 //       {
 //         id: uuidv4(),
 //         title: 'Done card 15',
-//         priority: 'Heigh',
+//         priority: 'High',
 //         description: 'description for Done card 15',
 //       },
 //       {
@@ -141,7 +141,7 @@
 //       {
 //         id: uuidv4(),
 //         title: 'frontend team card 19',
-//         priority: 'Heigh',
+//         priority: 'High',
 //         description: 'description for Assigne card 19',
 //       },
 //       {
@@ -158,7 +158,7 @@
 //       },
 //       {
 //         id: uuidv4(),
-//         priority: 'Heigh',
+//         priority: 'High',
 //         title: 'this card assigne to Sunny',
 //         description: 'description for InProgress card 8',
 //       },
@@ -184,7 +184,7 @@
 //       {
 //         id: uuidv4(),
 //         title: 'Done card 22',
-//         priority: 'Heigh',
+//         priority: 'High',
 //         description: 'description for Done card 22',
 //       },
 //       {
@@ -197,8 +197,23 @@
 //   },
 // ];
 
+export function getInitialData(): TBoard {
+  const columns: TColumn[] = coloumn_data.map((col) => ({
+    id: col.id,
+    title: col.title,
+    cards: col.cards.map((card) => ({
+      id: card.id,
+      title: card.title,
+      priorty: card.priority,
+      description: card.description,
+    })) as TCard[],
+  }));
+  return { columns };
+}
+
 //////huge data for testing purpose only
 import { v4 as uuidv4 } from 'uuid';
+import { TBoard, TCard, TColumn } from '../data';
 
 export const coloumn_data = [
   {
@@ -208,7 +223,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'front end card',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Todo card 1',
       },
       {
@@ -220,13 +235,13 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'fullstack developer card',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Todo card 3',
       },
       {
         id: uuidv4(),
         title: 'backend developer card',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Todo card 4',
       },
       {
@@ -238,7 +253,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'comrex private limited',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Todo card 6',
       },
     ],
@@ -250,21 +265,8 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         priority: 'low',
-        title: 'this card assigne to Mubashir',
+        title: 'muavia Haidri',
         description: 'description for InProgress card 7',
-      },
-      {
-        id: uuidv4(),
-        priority: 'Heigh',
-        title: 'this card assigne to Sunny',
-        description: 'description for InProgress card 8',
-      },
-      {
-        id: uuidv4(),
-        title: 'this card assigne to Muavia',
-        priority: 'Meduim',
-
-        description: 'description for InProgress card 9',
       },
     ],
   },
@@ -287,7 +289,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'Testing',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Testing card 12',
       },
       {
@@ -304,14 +306,14 @@ export const coloumn_data = [
     cards: [
       {
         id: uuidv4(),
-        title: 'dev card 14',
-        priority: 'low',
-        description: 'description for Done card 14',
+        priority: 'High',
+        title: 'this card assigne to Sunny',
+        description: 'description for InProgress card 8',
       },
       {
         id: uuidv4(),
         title: 'Done card 15',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Done card 15',
       },
       {
@@ -328,9 +330,9 @@ export const coloumn_data = [
     cards: [
       {
         id: uuidv4(),
-        priority: 'Meduim',
-        title: 'Assigne card 17',
-        description: ' frontend team card description for Assigne card 17',
+        priority: 'low',
+        title: 'this card assigne to Mubashir',
+        description: 'description for InProgress card 7',
       },
       {
         id: uuidv4(),
@@ -341,7 +343,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'frontend team card 19',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Assigne card 19',
       },
       {
@@ -358,7 +360,7 @@ export const coloumn_data = [
       },
       {
         id: uuidv4(),
-        priority: 'Heigh',
+        priority: 'High',
         title: 'this card assigne to Sunny',
         description: 'description for InProgress card 8',
       },
@@ -384,7 +386,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'Done card 22',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Done card 22',
       },
       {
@@ -402,7 +404,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'front end card',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Todo card 1',
       },
       {
@@ -414,13 +416,13 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'fullstack developer card',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Todo card 3',
       },
       {
         id: uuidv4(),
         title: 'backend developer card',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Todo card 4',
       },
       {
@@ -432,7 +434,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'comrex private limited',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Todo card 6',
       },
     ],
@@ -449,7 +451,7 @@ export const coloumn_data = [
       },
       {
         id: uuidv4(),
-        priority: 'Heigh',
+        priority: 'High',
         title: 'this card assigne to Sunny',
         description: 'description for InProgress card 8',
       },
@@ -481,7 +483,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'Testing',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Testing card 12',
       },
       {
@@ -505,7 +507,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'Done card 15',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Done card 15',
       },
       {
@@ -535,7 +537,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'frontend team card 19',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Assigne card 19',
       },
       {
@@ -552,7 +554,7 @@ export const coloumn_data = [
       },
       {
         id: uuidv4(),
-        priority: 'Heigh',
+        priority: 'High',
         title: 'this card assigne to Sunny',
         description: 'description for InProgress card 8',
       },
@@ -578,7 +580,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'Done card 15',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Done card 15',
       },
       {
@@ -608,7 +610,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'frontend team card 19',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Assigne card 19',
       },
       {
@@ -625,7 +627,7 @@ export const coloumn_data = [
       },
       {
         id: uuidv4(),
-        priority: 'Heigh',
+        priority: 'High',
         title: 'this card assigne to Sunny',
         description: 'description for InProgress card 8',
       },
@@ -651,7 +653,7 @@ export const coloumn_data = [
       {
         id: uuidv4(),
         title: 'Done card 22',
-        priority: 'Heigh',
+        priority: 'High',
         description: 'description for Done card 22',
       },
       {
